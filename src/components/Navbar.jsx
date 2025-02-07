@@ -31,7 +31,8 @@ const Navbar = () => {
               <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"></input>
               <button className="btn btn-outline-success" type="submit">Search</button>
             </form>
-            <i className="fa-regular fa-heart"></i>
+            <i className="align-content-center fa-regular fa-user fs-4"></i>
+            <i className="align-content-center fa-regular fa-heart fs-4"></i>
             <i className="align-content-center fa-cart-shopping fa-solid fs-4"></i>
           </div>
         </div>
