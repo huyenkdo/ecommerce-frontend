@@ -32,8 +32,18 @@ const Navbar = () => {
               <button className="btn btn-outline-success" type="submit">Search</button>
             </form>
             <i className="align-content-center fa-regular fa-user fs-4"></i>
-            <i className="align-content-center fa-regular fa-heart fs-4"></i>
-            <i className="align-content-center fa-cart-shopping fa-solid fs-4"></i>
+            <NavLink
+              to="/wishlist"
+              className='align-content-center text-dark'
+            >
+              <i className="fa-regular fa-heart fs-4"></i>
+            </NavLink>
+            <NavLink
+              to="/cart"
+              className='align-content-center text-dark'
+            >
+              <i className="fa-cart-shopping fa-solid fs-4"></i>
+            </NavLink>
           </div>
         </div>
       </div>
