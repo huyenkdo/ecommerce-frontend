@@ -2,7 +2,7 @@ import { NavLink } from 'react-router';
 
 const Navbar = () => {
   return (
-    <nav className="navbar px-3 navbar-expand-lg bg-dark-main">
+    <nav className="navbar px-3 navbar-expand-lg bg-dark-main sticky-top">
       <div className="container-fluid text-color-beige">
         <NavLink to="/" className="navbar-brand text-color-beige">Jullery</NavLink>
         <div className="collapse navbar-collapse justify-content-between" id="navbarNav">
@@ -10,21 +10,11 @@ const Navbar = () => {
             <li className="nav-item me-3 ">
               <NavLink
                 to="/"
-                className={({ isActive }) => isActive ? 'nav-link active text-color-beige' : 'navlink text-color-beige'}
-                aria-current={({ isActive }) => isActive ? 'page' : ''}
+                className='nav-link active text-color-beige'
               >
                 Home
               </NavLink>
             </li>
-            {/* <li className="nav-item">
-              <NavLink
-                to="/user"
-                className={({ isActive }) => isActive ? 'nav-link active' : 'navlink'}
-                aria-current={({ isActive }) => isActive ? 'page' : ''}
-              >
-                User
-              </NavLink>
-            </li> */}
           </ul>
           <div className='d-flex gap-4'>
             <form className="d-flex" role="search">
@@ -42,7 +32,7 @@ const Navbar = () => {
               to="/cart"
               className='align-content-center text-color-beige'
             >
-              <i className="fa-cart-shopping fa-solid fs-4"></i>
+              <i className="fa-solid fa-bag-shopping fs-4"></i>
             </NavLink>
           </div>
         </div>
