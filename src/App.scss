@@ -1,0 +1,36 @@
+.bg-dark-main {
+  background-color: rgba(0, 0, 0, .8) !important;
+}
+
+.text-color-beige {
+  color: #ede8e2 !important;
+}
+
+.border-beige {
+  border-color: #ede8e2 !important;
+}
+
+.bg-beige-light {
+  background-color: #f6f1eb;
+}
+
+.bg-white-beige {
+  background-color: rgb(255, 252, 247) !important;
+}
+
+.text-dark-main {
+  color: #333;
+}
+
+img {
+  transition: 0.2s ease-in;
+  &.link:hover {
+    opacity: 0.6;
+  }
+}
+
+.card {
+  &.small {
+    width: 19rem;
+  }
+}

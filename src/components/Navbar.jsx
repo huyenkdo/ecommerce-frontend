@@ -2,15 +2,15 @@ import { NavLink } from 'react-router';
 
 const Navbar = () => {
   return (
-    <nav className="navbar px-3 navbar-expand-lg bg-body-tertiary">
-      <div className="container-fluid">
-        <NavLink to="/" className="navbar-brand">Jullery</NavLink>
+    <nav className="navbar px-3 navbar-expand-lg bg-dark-main">
+      <div className="container-fluid text-color-beige">
+        <NavLink to="/" className="navbar-brand text-color-beige">Jullery</NavLink>
         <div className="collapse navbar-collapse justify-content-between" id="navbarNav">
           <ul className="navbar-nav">
-            <li className="nav-item me-3">
+            <li className="nav-item me-3 ">
               <NavLink
                 to="/"
-                className={({ isActive }) => isActive ? 'nav-link active' : 'navlink'}
+                className={({ isActive }) => isActive ? 'nav-link active text-color-beige' : 'navlink text-color-beige'}
                 aria-current={({ isActive }) => isActive ? 'page' : ''}
               >
                 Home
@@ -29,18 +29,18 @@ const Navbar = () => {
           <div className='d-flex gap-4'>
             <form className="d-flex" role="search">
               <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"></input>
-              <button className="btn btn-outline-success" type="submit">Search</button>
+              <button className="btn btn-outline-light border-beige" type="submit">Search</button>
             </form>
             <i className="align-content-center fa-regular fa-user fs-4"></i>
             <NavLink
               to="/wishlist"
-              className='align-content-center text-dark'
+              className='align-content-center text-color-beige'
             >
               <i className="fa-regular fa-heart fs-4"></i>
             </NavLink>
             <NavLink
               to="/cart"
-              className='align-content-center text-dark'
+              className='align-content-center text-color-beige'
             >
               <i className="fa-cart-shopping fa-solid fs-4"></i>
             </NavLink>
