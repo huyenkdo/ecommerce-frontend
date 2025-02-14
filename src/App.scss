@@ -1,5 +1,9 @@
 .bg-dark-main {
   background-color: rgba(0, 0, 0, .8) !important;
+
+  &.btn:hover {
+    opacity: 0.6;
+  }
 }
 
 .text-color-beige {
@@ -33,4 +37,12 @@ img {
   &.small {
     width: 19rem;
   }
+}
+
+.text-xs {
+  font-size: 0.9rem;
+}
+
+.sticky-margin {
+  top: 80px !important;
 }
