@@ -8,9 +8,9 @@ function Wishlist() {
   const { wishlist } = useContext(ProductsContext);
 
   return (
-    <div className="container my-4 w-50 d-grid">
+    <div className="container my-4 d-grid">
       <h1 className="fw-lighter text-dark-main py-4 text-center">Here's what's in your wishlist</h1>
-      <div className="mt-4 gap-4">
+      <div className="d-flex gap-4 justify-content-center mt-4">
         {wishlist.map(item => {
           const cld = new Cloudinary({
             cloud: {
@@ -20,7 +20,7 @@ function Wishlist() {
 
           const photo = cld.image(`development/${item.photo_key}`);
 
-          return <div className="card mb-3 item-card bg-white-beige shadow-sm border-0" key={item.photo_key}>
+          return <div className="card mb-3 item-card bg-white-beige shadow-sm border-0 small" key={item.photo_key}>
                     <div className="d-flex">
                       <NavLink to={`/product/${item.id}`}>
                         <AdvancedImage cldImg={photo} className="rounded-start item-photo link" alt="product-photo"/>

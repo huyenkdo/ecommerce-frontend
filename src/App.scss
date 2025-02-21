@@ -2,6 +2,7 @@
   background-color: rgba(0, 0, 0, .8) !important;
 
   &.btn:hover {
+    transition: 0.2s ease-in;
     opacity: 0.6;
   }
 }
@@ -26,11 +27,8 @@
   color: #333;
 }
 
-img {
-  transition: 0.2s ease-in;
-}
-
 .link:hover {
+  transition: 0.2s ease-in;
   opacity: 0.6;
 }
 
