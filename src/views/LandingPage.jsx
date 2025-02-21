@@ -3,7 +3,7 @@ import Card from "../components/Card";
 import ProductsContext from "../contexts/products_context";
 
 function LandingPage() {
-  const { products, setProducts } = useContext(ProductsContext);
+  const { products } = useContext(ProductsContext);
 
   return (
     <div className="container d-flex align-items-center flex-column mb-4 mt-5">

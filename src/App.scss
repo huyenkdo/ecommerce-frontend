@@ -46,3 +46,23 @@ img {
 .sticky-margin {
   top: 80px !important;
 }
+
+.item-photo {
+  max-height: 150px;
+  max-width: fit-content !important;
+}
+
+.item-card {
+  max-height: 150px;
+  width: 50vw;
+  justify-self: center;
+}
+
+.fs-xxl {
+  font-size: xx-large;
+}
+
+.check-out-btn {
+  padding-left: 5rem !important;
+  padding-right: 5rem !important;
+}
