@@ -9,32 +9,38 @@ function Wishlist() {
 
   return (
     <div className="container my-4 d-grid">
-      <h1 className="fw-lighter text-dark-main py-4 text-center">Here's what's in your wishlist</h1>
-      <div className="d-flex gap-4 justify-content-center mt-4">
-        {wishlist.map(item => {
-          const cld = new Cloudinary({
-            cloud: {
-              cloudName: "did0eciid",
-            },
-          });
+      {wishlist.length > 0 ? (
+        <>
+          <h1 className="fw-lighter text-dark-main py-4 text-center">Here's what's in your wishlist</h1>
+          <div className="d-flex gap-4 justify-content-center mt-4">
+            {wishlist.map(item => {
+              const cld = new Cloudinary({
+                cloud: {
+                  cloudName: "did0eciid",
+                },
+              });
 
-          const photo = cld.image(`development/${item.photo_key}`);
+              const photo = cld.image(`development/${item.photo_key}`);
 
-          return <div className="card mb-3 item-card bg-white-beige shadow-sm border-0 small" key={item.photo_key}>
-                    <div className="d-flex">
-                      <NavLink to={`/product/${item.id}`}>
-                        <AdvancedImage cldImg={photo} className="rounded-start item-photo link" alt="product-photo"/>
-                      </NavLink>
-                      <div className="align-items-center d-flex">
-                        <div className="card-body">
-                          <h5 className="card-title text-dark-main">{item.name}</h5>
-                          <p className="card-text text-dark-main"><small className="text-body-secondary">{item.price} €</small></p>
+              return <div className="card mb-3 item-card bg-white-beige shadow-sm border-0 small" key={item.photo_key}>
+                        <div className="d-flex">
+                          <NavLink to={`/product/${item.id}`}>
+                            <AdvancedImage cldImg={photo} className="rounded-start item-photo link" alt="product-photo"/>
+                          </NavLink>
+                          <div className="align-items-center d-flex">
+                            <div className="card-body">
+                              <h5 className="card-title text-dark-main">{item.name}</h5>
+                              <p className="card-text text-dark-main"><small className="text-body-secondary">{item.price} €</small></p>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-        })}
-      </div>
+            })}
+          </div>
+        </>
+      ) : (
+        <h1 className="fw-lighter text-dark-main py-4 text-center">Your wishlist is empty</h1>
+      )}
     </div>
    )
 }
