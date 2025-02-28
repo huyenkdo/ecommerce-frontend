@@ -1,6 +1,10 @@
 import { NavLink } from 'react-router';
+import { useContext } from 'react';
+import ProductsContext from "../contexts/products_context";
 
 const Navbar = () => {
+  const { items } = useContext(ProductsContext);
+
   return (
     <nav className="navbar px-3 navbar-expand-lg bg-dark-main sticky-top">
       <div className="container-fluid text-color-beige">
@@ -30,9 +34,10 @@ const Navbar = () => {
             </NavLink>
             <NavLink
               to="/cart"
-              className='align-content-center text-color-beige'
+              className='align-content-center text-color-beige position-relative'
             >
               <i className="fa-solid fa-bag-shopping fs-4"></i>
+              <p className='cart-counter bg-white-beige bottom-0 fw-bold m-0 position-absolute rounded-circle start-50 text-dark-main'>{items.length}</p>
             </NavLink>
           </div>
         </div>
