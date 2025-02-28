@@ -25,7 +25,12 @@ const Navbar = () => {
               <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"></input>
               <button className="btn btn-outline-light border-beige" type="submit">Search</button>
             </form>
-            <i className="align-content-center fa-regular fa-user fs-4"></i>
+            <NavLink
+              to="/user"
+              className='align-content-center text-color-beige'
+            >
+              <i className="align-content-center fa-regular fa-user fs-4"></i>
+            </NavLink>
             <NavLink
               to="/wishlist"
               className='align-content-center text-color-beige'

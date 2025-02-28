@@ -16,7 +16,7 @@
 }
 
 .bg-beige-light {
-  background-color: #f6f1eb;
+  background-color: #f6f1eb !important;
 }
 
 .bg-white-beige {
@@ -71,4 +71,8 @@
   height: 15px;
   text-align: center;
   font-size: xx-small;
+}
+
+.fit-height {
+  min-height: fit-content !important;
 }

@@ -5,6 +5,7 @@ import LandingPage from './views/LandingPage';
 import Product from './views/Product';
 import Wishlist from './views/Wishlist';
 import Cart from './views/Cart';
+import User from './views/User';
 import { useEffect, useState } from 'react';
 import ProductsContext from './contexts/products_context';
 
@@ -13,6 +14,7 @@ function App() {
   const [items, setItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState();
   const [wishlist, setWishlist] = useState([]);
+  const [orders, setOrders] = useState([]);
 
   useEffect(() => {
     const url = `${process.env.REACT_APP_API_URL}/products`;
@@ -73,8 +75,29 @@ function App() {
     });
   }, [])
 
+  useEffect(() => {
+    const url = `${process.env.REACT_APP_API_URL}/orders`;
+    const requestOptions = {
+      method: 'GET',
+      redirect: 'follow',
+      headers: {
+        "Content-Type": "application/json",
+        'X-User-Email': process.env.REACT_APP_USER_EMAIL,
+        'X-User-Token': process.env.REACT_APP_USER_TOKEN
+      },
+    };
+    fetch(url, requestOptions)
+    .then(response => response.json())
+    .then(result => {
+      setOrders(result);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  }, [])
+
   return (
-    <ProductsContext.Provider value={{products, setProducts, items, setItems, totalPrice, setTotalPrice, wishlist, setWishlist}}>
+    <ProductsContext.Provider value={{products, setProducts, items, setItems, totalPrice, setTotalPrice, wishlist, setWishlist, orders, setOrders}}>
       <div>
         <BrowserRouter>
           <Navbar />
@@ -82,6 +105,7 @@ function App() {
               <Route path="/" element= {<LandingPage/>} />
               <Route path="/wishlist" element= {<Wishlist/>} />
               <Route path="/cart" element= {<Cart/>} />
+              <Route path="/user" element= {<User/>} />
               <Route path="product/:product" element={ <Product/> }/>
               {/* <Route path="*" element= {<Error/>} /> */}
           </Routes>
