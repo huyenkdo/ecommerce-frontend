@@ -4,6 +4,8 @@ import { NavLink } from 'react-router';
 import { useParams } from 'react-router';
 import { useEffect, useState, useContext } from 'react';
 import ProductsContext from "../contexts/products_context";
+import { quality } from "@cloudinary/url-gen/actions/delivery";
+import { auto } from "@cloudinary/url-gen/qualifiers/quality";
 
 function Product() {
   const productID = useParams().product
@@ -29,7 +31,7 @@ function Product() {
         },
       });
       const photos = result.photos.map(({key}) => {
-        return cld.image(`development/${key}`);
+        return cld.image(`development/${key}`).delivery(quality(auto()));
       })
       setPhotos(photos);
     })

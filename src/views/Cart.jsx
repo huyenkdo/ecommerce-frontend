@@ -3,6 +3,8 @@ import { Cloudinary } from '@cloudinary/url-gen';
 import { NavLink } from 'react-router';
 import { useContext } from 'react';
 import ProductsContext from "../contexts/products_context";
+import { quality } from "@cloudinary/url-gen/actions/delivery";
+import { auto } from "@cloudinary/url-gen/qualifiers/quality";
 
 function Cart() {
   const { items, totalPrice, setItems, setTotalPrice } = useContext(ProductsContext);
@@ -44,7 +46,7 @@ function Cart() {
           </h1>
           <div className="mt-4 gap-4">
             {items.map(item => {
-              const photo = cld.image(`development/${item.photo_key}`);
+              const photo = cld.image(`development/${item.photo_key}`).delivery(quality(auto()));
               return (
                 <div className="card mb-3 item-card bg-white-beige shadow-sm border-0" key={item.photo_key}>
                   <div className="d-flex">

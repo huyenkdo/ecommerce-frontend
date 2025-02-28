@@ -1,6 +1,8 @@
 import { AdvancedImage } from '@cloudinary/react'
 import { Cloudinary } from '@cloudinary/url-gen';
 import { NavLink } from 'react-router';
+import { quality } from "@cloudinary/url-gen/actions/delivery";
+import { auto } from "@cloudinary/url-gen/qualifiers/quality";
 
 function Card({product}) {
   const cld = new Cloudinary({
@@ -10,7 +12,7 @@ function Card({product}) {
   });
 
   const photos = product.photos.map(({key}) => {
-    return cld.image(`development/${key}`);
+    return cld.image(`development/${key}`).delivery(quality(auto()));
   })
 
   return (
