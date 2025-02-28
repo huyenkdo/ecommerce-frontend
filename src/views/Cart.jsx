@@ -31,6 +31,53 @@ function Cart() {
     });
   }
 
+  const addItem = (productID) => {
+    const orderItem = {
+      'product_id': productID
+    }
+    const url = `${process.env.REACT_APP_API_URL}/order_items`;
+    const requestOptions = {
+      method: 'POST',
+      redirect: 'follow',
+      headers: {
+        "Content-Type": "application/json",
+        'X-User-Email': process.env.REACT_APP_USER_EMAIL,
+        'X-User-Token': process.env.REACT_APP_USER_TOKEN
+      },
+      body: JSON.stringify(orderItem)
+    };
+    fetch(url, requestOptions)
+    .then(response => response.json())
+    .then(result => {
+      setItems(result.order_items);
+      setTotalPrice(result.total_price);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  }
+
+  const removeItem = (productID) => {
+    const url = `${process.env.REACT_APP_API_URL}/order_items/${productID}`;
+    const requestOptions = {
+      method: 'DELETE',
+      redirect: 'follow',
+      headers: {
+        'X-User-Email': process.env.REACT_APP_USER_EMAIL,
+        'X-User-Token': process.env.REACT_APP_USER_TOKEN
+      }
+    };
+    fetch(url, requestOptions)
+    .then(response => response.json())
+    .then(result => {
+      setItems(result.order_items);
+      setTotalPrice(result.total_price);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  }
+
   const cld = new Cloudinary({
     cloud: {
       cloudName: "did0eciid",
@@ -48,19 +95,25 @@ function Cart() {
             {items.map(item => {
               const photo = cld.image(`development/${item.photo_key}`).delivery(quality(auto()));
               return (
-                <div className="card mb-3 item-card bg-white-beige shadow-sm border-0" key={item.photo_key}>
-                  <div className="d-flex">
-                    <NavLink to={`/product/${item.product_id}`}>
-                      <AdvancedImage cldImg={photo} className="rounded-start item-photo link" alt="product-photo" />
-                    </NavLink>
-                    <div className="align-items-center d-flex">
-                      <div className="card-body">
-                        <h5 className="card-title text-dark-main">{item.name}</h5>
-                        <p className="card-text text-dark-main">Quantity: {item.quantity}</p>
-                        <p className="card-text text-dark-main">
-                          <small className="text-body-secondary">{item.total_price} €</small>
-                        </p>
+                <div className="card mb-3 item-card bg-white-beige shadow-sm border-0 d-flex" key={item.photo_key}>
+                  <div className="d-flex justify-content-between pe-4">
+                    <div className='d-flex'>
+                      <NavLink to={`/product/${item.product_id}`}>
+                        <AdvancedImage cldImg={photo} className="rounded-start item-photo link" alt="product-photo" />
+                      </NavLink>
+                      <div className="align-items-center d-flex">
+                        <div className="card-body">
+                          <h5 className="card-title text-dark-main">{item.name}</h5>
+                          <p className="card-text text-dark-main">Quantity: {item.quantity}</p>
+                          <p className="card-text text-dark-main">
+                            <small className="text-body-secondary">{item.total_price} €</small>
+                          </p>
+                        </div>
                       </div>
+                    </div>
+                    <div className="d-grid gap-3 m-3">
+                      <i className="align-content-end fa-solid fa-plus" type='button' onClick={() => {addItem(item.product_id)}}></i>
+                      <i className="fa-minus fa-solid" type='button' onClick={() => {removeItem(item.product_id)}}></i>
                     </div>
                   </div>
                 </div>
